@@ -28,12 +28,10 @@ fly.interceptors.response.use(
   }
 )
 
+Vue.prototype.$store = store // 将store挂载在Vue的原型上
 Vue.prototype.$http = fly // 将fly实例挂在vue原型上
 
-const app = new Vue({
-  store,
-  ...App
-})
+const app = new Vue(App)
 app.$mount()
 
 export default {

@@ -18,7 +18,6 @@
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
   </div>
 </template>
 
@@ -62,6 +61,10 @@ export default {
   created () {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
+  },
+
+  mounted () {
+    console.log(this.$store)
   }
 }
 </script>
@@ -93,13 +96,5 @@ export default {
   padding: 0 12px;
   margin-bottom: 5px;
   border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
 }
 </style>
