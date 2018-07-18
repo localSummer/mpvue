@@ -11,7 +11,7 @@ export default {
   mounted () {
     this.$http.get('/test').then((response) => {
       console.log(response)
-      console.log('test');
+      console.log('test')
     }).catch((error) => {
       console.log(error)
     })
