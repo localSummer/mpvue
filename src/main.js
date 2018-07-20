@@ -41,8 +41,8 @@ export default {
     pages: ['pages/logs/main', '^pages/index/main'],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
+      navigationBarBackgroundColor: '#ddd',
+      navigationBarTitleText: '实训大数据',
       navigationBarTextStyle: 'black'
     }
   }

@@ -5,8 +5,8 @@
       :value="value"
       @next="next"
       @prev="prev"
-      lunar
       clean
+      range
       @select="select"
       ref="calendar"
       @selectMonth="selectMonth"
@@ -23,7 +23,7 @@
       return {
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         disabledarr: ['2018-6-27', '2018-6-25'],
-        value: [2018, 6, 7],
+        value: [[2018, 6, 21], [2018, 6, 28]],
         begin: [2016, 1, 1],
         end: [2020, 1, 1]
       }

@@ -3,7 +3,8 @@
  */
 import {
   TEST,
-  USER_INFO
+  USER_INFO,
+  ADD_TEST
 } from './types'
 
 export default {
@@ -12,5 +13,8 @@ export default {
   },
   [USER_INFO] (state, v) {
     state.userInfo = v
+  },
+  [ADD_TEST] (state, num) {
+    state.test += num
   }
 }
