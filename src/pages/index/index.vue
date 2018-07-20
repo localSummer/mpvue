@@ -15,7 +15,7 @@
         <span :class="{active: active === 1}" @click="handleActive(1)">最近一月</span>
         <span :class="{active: active === 2}" @click="handleActive(2)">最近半年</span>
         <span :class="{active: active === 3}" @click="handleActive(3)">最近一年</span>
-    </div>
+      </div>
     </div>
 </div>
   
