@@ -70,7 +70,7 @@ export default {
     }
     span {
       font-size: 32rpx;
-      color: #1f1f1f;
+      color: #000;
       font-weight: bold;
       letter-spacing: 1px;
     }
@@ -95,7 +95,7 @@ export default {
     span {
       font-size: 30rpx;
       margin-right: 60rpx;
-      color: #424242;
+      color: #000;
     }
   }
   .last {
