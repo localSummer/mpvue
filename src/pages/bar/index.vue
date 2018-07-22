@@ -1,46 +1,58 @@
 <template>
   <div>
-    <button @click="handleIndex">turn index</button>
-    {{test}}
-    <div class="container">
-      <ec-canvas class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar" :ec="ec"></ec-canvas>
+    <button>turn index</button>
+    <div class="wrap">
+      <mpvue-echarts lazyLoad :echarts="echarts" :onInit="handleInit" ref="echarts" />
     </div>
   </div>
 </template>
 
 <script>
   import {testChart} from '../../utils/echartOptions'
-  import {mapState} from 'vuex'
+  import * as echarts from 'echarts/dist/echarts.simple.min'
+  import mpvueEcharts from 'mpvue-echarts'
+
+  let chart = null
 
   export default {
     data () {
       return {
-        ec: {
-          options: testChart
-        }
+        option: null,
+        echarts
       }
     },
-    computed: {
-      ...mapState([
-        'test'
-      ])
+    components: {
+      mpvueEcharts
     },
     methods: {
-      handleIndex () {
-        wx.redirectTo({
-          url: '../index/main'
+      initChart (option) {
+        this.option = option
+        this.$refs.echarts.init()
+      },
+      handleInit (canvas, width, height) {
+        chart = echarts.init(canvas, null, {
+          width: width,
+          height: height
         })
+        canvas.setChart(chart)
+        chart.setOption(this.option)
+        return chart
       }
     },
     mounted () {
-      console.log('bar mounted')
+      let _this = this
+      _this.initChart(testChart)
+      setTimeout(function () {
+        testChart.series[0].data = [100, 200, 300, 50, 200, 900, 190]
+        _this.initChart(testChart)
+      }, 2000)
     }
   }
 </script>
 
 <style scoped>
-  ec-canvas {
-    width: 400px;
-    height: 400px;
+  .wrap {
+    width: 100%;
+    height: 300px;
   }
 </style>

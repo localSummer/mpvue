@@ -17,39 +17,69 @@
         <span :class="{active: active === 3}" @click="handleActive(3)">最近一年</span>
       </div>
     </div>
+    <!-- 数据总览 -->
+    <data-summary></data-summary>
+    <!-- tab切换统计 -->
+    <div class="tab">
+      <div v-if="activeTab === 0">
+        <frequency-trend></frequency-trend>
+      </div>
+      <div v-if="activeTab === 1">
+        <time-analysis></time-analysis>
+      </div>
+      <div v-if="activeTab === 2">
+        <train-score></train-score>
+      </div>
+    </div>
+    
+    <ui class="tab-nav">
+      <li @click="handleTabActive(0)">
+        <div :class="{'tab-active': activeTab === 0}"></div>
+      </li>
+      <li @click="handleTabActive(1)">
+        <div :class="{'tab-active': activeTab === 1}"></div>
+      </li>
+      <li @click="handleTabActive(2)">
+        <div :class="{'tab-active': activeTab === 2}"></div>
+      </li>
+      <li @click="handleTabActive(3)">
+        <div :class="{'tab-active': activeTab === 3}"></div>
+      </li>
+      <li @click="handleTabActive(4)">
+        <div :class="{'tab-active': activeTab === 4}"></div>
+      </li>
+    </ui>
 </div>
   
 </template>
 
 <script>
+import dataSummary from '@/components/data-summary'
+import frequencyTrend from '@/components/frequency-trend'
+import timeAnalysis from '@/components/time-analysis'
+import trainScore from '@/components/train-score'
 
 export default {
   data () {
     return {
       userInfo: {},
-      active: 0
+      active: 0,
+      activeTab: 0
     }
+  },
+  components: {
+    dataSummary,
+    frequencyTrend,
+    timeAnalysis,
+    trainScore
   },
   methods: {
-    getUserInfo () {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo
-            }
-          })
-        }
-      })
+    handleActive (num) {
+      this.active = num
     },
-    handleActive (activeDate) {
-      this.active = activeDate
+    handleTabActive (num) {
+      this.activeTab = num
     }
-  },
-  created () {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
   }
 }
 </script>
@@ -119,6 +149,26 @@ export default {
     }
     .active {
       color: #085394;
+    }
+  }
+  .tab {
+    width: 100%;
+    height: 200px;
+  }
+  .tab-nav {
+    display: flex;
+    justify-content: center;
+    li {
+      padding: 15px;
+      div {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #9a9a9a;
+      } 
+      .tab-active {
+        background-color: #fc0;
+      }
     }
   }
 </style>
