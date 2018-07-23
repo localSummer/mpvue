@@ -65,9 +65,13 @@ export default {
           url: '../calendar/main'
         })
       } else if (num === 1) {
-        console.log(1)
+        wx.navigateTo({
+          url: '../game/main'
+        })
       } else {
-        console.log(2)
+        wx.navigateTo({
+          url: '../user/main'
+        })
       }
     }
   }
