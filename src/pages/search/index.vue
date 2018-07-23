@@ -36,7 +36,7 @@
           <img class="wrap-spread" src="../../media/images/spread.png" alt="">
         </div>
     </div>
-    <button class="submit">查看</button>
+    <button class="submit" @click="handleLook">查看</button>
 </div>
   
 </template>
@@ -51,10 +51,8 @@ export default {
     }
   },
   methods: {
-    handleForwardDate () {
-      wx.navigateTo({
-        url: '../calendar/main'
-      })
+    handleLook () {
+      wx.navigateBack()
     }
   }
 }
@@ -115,7 +113,11 @@ export default {
           line-height: 38px;
           text-align: center;
           font-size: 12px;
-          padding: 0 15px;
+          padding: 0 10px;
+          width: 214px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
     }
