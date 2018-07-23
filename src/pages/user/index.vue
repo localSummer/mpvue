@@ -9,7 +9,7 @@
           <scroll-view scroll-y :scroll-into-view="toView" class="scroll-wrap">
             <div :id="item.type" class="item" v-for="(item, index) in items" :key="index">
               <label>
-                <radio color="#f60" :value="item.id" /> {{item.name}}
+                <radio color="#f60" :value="item.id + '-' + item.name" /> {{item.name}}
               </label>
             </div>
           </scroll-view>
@@ -18,6 +18,7 @@
           <div v-for="(item, index) in alphas" :key="index" :class="{active: active === item}" @click="handleActive(item)">{{item}}</div>
         </div>
     </div>
+    <button class="submit" :disabled="select.value === ''" @click="handleSubmit">确定</button>
   </div>
 </template>
 
@@ -57,21 +58,37 @@ export default {
       alphas: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
       active: 'A',
       search: '',
-      toView: 'ALL'
+      toView: 'ALL',
+      select: {
+        name: '',
+        value: ''
+      }
     }
   },
   methods: {
     radioChange: function (e) {
-      this.select = e.mp.detail.value
+      let idName = e.mp.detail.value.split('-')
+      this.select.value = idName[0]
+      this.select.name = idName[1]
     },
     handleActive (alpha) {
       this.active = alpha
       this.toView = alpha
+    },
+    handleSubmit () {
+      this.$store.dispatch('updateSelectUser', {
+        id: this.select.value,
+        name: this.select.name
+      })
+      wx.navigateBack()
     }
   },
   onUnload () {
     this.active = 'A'
     this.toView = 'ALL'
+    this.select.name = ''
+    this.select.value = ''
+    this.search = ''
   }
 }
 </script>
@@ -102,10 +119,11 @@ export default {
   }
   .wrap {
     margin-top: 10px;
+    margin-bottom: 15px;
     padding: 0 10px 0 15px;
     color: #000;
     font-size: 12px;
-    height: 530px;
+    height: 480px;
     position: relative;
     .item {
       line-height: 45px;
@@ -115,10 +133,9 @@ export default {
         top: 0;
         right: 30px;
         color: #ccc;
-        font-size: 16px;
+        font-size: 14px;
         div {
             width: 20px;
-            height: 20px;
             vertical-align: middle;
             text-align: center;
         }
@@ -130,6 +147,17 @@ export default {
     }
   }
   .scroll-wrap {
-    height: 530px;
+    height: 480px;
+  }
+  .submit {
+    width: 280px;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 auto;
+    background-color: #ff9a02;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
   }
 </style>

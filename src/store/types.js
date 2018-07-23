@@ -1,4 +1,8 @@
 /**
  * Created by wxw on 18-7-18.
  */
+// 更新选择的日期
 export const UPDATE_SELECT_DATE = 'UPDATE_SELECT_DATE'
+export const UPDATE_SELECT_GAME = 'UPDATE_SELECT_GAME'
+export const UPDATE_GAME_ACTIVE_TAB = 'UPDATE_GAME_ACTIVE_TAB'
+export const UPDATE_SELECT_USER = 'UPDATE_SELECT_USER'

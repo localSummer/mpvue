@@ -21,7 +21,7 @@
             <div class="wrap-info">大赛</div>
           </div>
           <div class="wrap-input">
-            <input type="text" disabled v-model="game">
+            <input type="text" disabled v-model="selectGame.name">
           </div>
           <img class="wrap-spread" @click="handleSpread(1)" src="../../media/images/spread.png" alt="">
         </div>
@@ -31,28 +31,31 @@
             <div class="wrap-info">用户</div>
           </div>
           <div class="wrap-input">
-            <input type="text" disabled v-model="group">
+            <input type="text" disabled v-model="selectUser.name">
           </div>
           <img class="wrap-spread" @click="handleSpread(2)" src="../../media/images/spread.png" alt="">
         </div>
     </div>
-    <button class="submit" @click="handleLook">查看</button>
+    <button class="submit" :disabled="getSelectDate && selectGame.id && selectUser.id" @click="handleLook">查看</button>
 </div>
   
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 export default {
   data () {
     return {
-      game: '2018第三节全国食品营养与安全检测技能大赛',
-      group: '北京石油化工学院'
+      name: ''
     }
   },
   computed: {
     ...mapGetters([
       'getSelectDate'
+    ]),
+    ...mapState([
+      'selectGame',
+      'selectUser'
     ])
   },
   methods: {

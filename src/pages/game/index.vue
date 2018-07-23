@@ -47,7 +47,13 @@ export default {
   methods: {
     handleActiveTab (num) {
       this.activeTab = num
+      this.$store.dispatch('updateGameActiveTab', this.activeTab)
     }
+  },
+  onUnload () {
+    this.search = ''
+    this.activeTab = 0
+    this.$store.dispatch('updateGameActiveTab', 0)
   }
 }
 </script>
