@@ -3,11 +3,15 @@
     <div class="header">
       <img class="person" src="../../media/images/person.png" alt="">
       <span>下午好，欢迎使用数据统计分析</span>
-      <img class="apps" src="../../media/images/apps.png" alt="">
+      <img @click="handleForwardDate(1)" class="apps" src="../../media/images/apps.png" alt="">
     </div>
     <div class="date">
-      <span>2017-07 ~ 2018-07</span>
-      <img @click="handleForwardDate" src="../../media/images/down.png" alt="">
+      <span class="label">
+        <span v-text="selectDate.startDate"></span>
+        ~
+        <span v-text="selectDate.endDate"></span>
+      </span>
+      <img @click="handleForwardDate(0)" src="../../media/images/down.png" alt="">
     </div>
     <div class="last">
       <div class="date-last">
@@ -60,6 +64,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import dataSummary from '@/components/data-summary'
 import frequencyTrend from '@/components/frequency-trend'
 import timeAnalysis from '@/components/time-analysis'
@@ -74,6 +79,11 @@ export default {
       active: 0,
       activeTab: 0
     }
+  },
+  computed: {
+    ...mapState([
+      'selectDate'
+    ])
   },
   components: {
     dataSummary,
@@ -90,10 +100,16 @@ export default {
     handleTabActive (num) {
       this.activeTab = num
     },
-    handleForwardDate () {
-      wx.navigateTo({
-        url: '../calendar/main'
-      })
+    handleForwardDate (flag) {
+      if (flag === 0) {
+        wx.navigateTo({
+          url: '../calendar/main'
+        })
+      } else {
+        wx.navigateTo({
+          url: '../search/main'
+        })
+      }
     }
   }
 }
@@ -137,7 +153,7 @@ export default {
       width: 32rpx;
       height: 32rpx;
     }
-    span {
+    .label {
       font-size: 30rpx;
       margin-right: 60rpx;
       color: #000;

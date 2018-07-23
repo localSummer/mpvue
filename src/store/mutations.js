@@ -2,19 +2,16 @@
  * Created by wxw on 18-7-18.
  */
 import {
-  TEST,
-  USER_INFO,
-  ADD_TEST
+  ADD_TEST,
+  UPDATE_SELECT_DATE
 } from './types'
 
 export default {
-  [TEST] (state, v) {
-    state.test = v
-  },
-  [USER_INFO] (state, v) {
-    state.userInfo = v
-  },
   [ADD_TEST] (state, num) {
     state.test += num
+  },
+  [UPDATE_SELECT_DATE] (state, date) {
+    state.selectDate.startDate = date.startDate
+    state.selectDate.endDate = date.endDate
   }
 }

@@ -5,18 +5,16 @@
       <img src="../../media/images/arrow-right.png" alt="rightArrow">
       <input type="text" disabled="true" v-model="endDate" placeholder="终止日期">
     </div>
-    <div class="tips" v-text="tips"></div>
-    <Calendar
-      :value="value"
-      @next="next"
-      @prev="prev"
-      clean
-      range
-      @select="select"
-      ref="calendar"
-      @selectMonth="selectMonth"
-      @selectYear="selectYear"
-    />
+    <div class="tips" v-if="startDate === '' && endDate === ''" v-text="tips"></div>
+    <div v-if="showCalendar">
+      <Calendar
+        :value="value"
+        clean
+        range
+        @select="select"
+        ref="calendar"
+      />
+    </div>
     <button :class="['submit', {'submit-active': startDate && endDate}]" @click="handleSubmit">确定</button>
   </div>
 </template>
@@ -29,43 +27,52 @@
         value: [],
         startDate: '',
         endDate: '',
-        tips: '请选择一个日期为起始日期'
+        tips: '',
+        showCalendar: true
       }
     },
     components: {
       Calendar
     },
     methods: {
-      selectMonth (month, year) {
-        console.log(year, month)
-      },
-      prev (month) {
-        console.log(month)
-      },
-      next (month) {
-        console.log(month)
-      },
-      selectYear (year) {
-        console.log(year)
-      },
       setToday (val, val1, val2) {
         this.$refs.calendar.setToday()
       },
-      select (val, val2) {
-        console.log(val)
-        console.log(val2)
+      select (start, end) {
+        let startDate = Object.assign([], start)
+        let endDate = Object.assign([], end)
+        startDate[1] += 1
+        endDate[1] += 1
+        this.startDate = startDate.join('-')
+        this.endDate = endDate.join('-')
       },
       handleSubmit () {
         if (!this.startDate) {
           this.tips = '请选择一个日期为起始日期'
+          return null
         } else if (!this.endDate) {
           this.tips = '请选择一个日期为终止日期'
+          return null
         }
+        this.$store.dispatch('updateSelectDate', {
+          startDate: this.startDate,
+          endDate: this.endDate
+        })
+        wx.navigateBack()
       }
+    },
+    onLoad () {
+      this.showCalendar = true
     },
     mounted () {
       // 默认选中今天
       this.setToday()
+    },
+    onUnload () {
+      this.showCalendar = false
+      this.startDate = ''
+      this.endDate = ''
+      this.value = []
     }
   }
 </script>

@@ -12,7 +12,10 @@ Vue.use(Vuex)
 
 const state = {
   test: 0,
-  userInfo: {}
+  selectDate: {
+    startDate: '2018-7-10',
+    endDate: '2018-7-11'
+  }
 }
 
 export default new Vuex.Store({
