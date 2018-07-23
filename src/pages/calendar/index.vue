@@ -41,14 +41,15 @@
         this.$refs.calendar.setToday()
       },
       prev (month) {
+        console.log(this.startDate, this.endDate)
         let currentMonth = new Date().getMonth() + 1
-        if (currentMonth === month) {
+        if (this.startDate === '' && currentMonth === month) {
           this.setToday()
         }
       },
       next (month) {
         let currentMonth = new Date().getMonth() + 1
-        if (currentMonth === month) {
+        if (this.startDate === '' && currentMonth === month) {
           this.setToday()
         }
       },
