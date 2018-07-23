@@ -36,7 +36,7 @@
           <img class="wrap-spread" @click="handleSpread(2)" src="../../media/images/spread.png" alt="">
         </div>
     </div>
-    <button class="submit" :disabled="getSelectDate && selectGame.id && selectUser.id" @click="handleLook">查看</button>
+    <button class="submit" :disabled="this.getSelectDate === '' && this.selectGame.id === '' && this.selectUser.id === ''" @click="handleLook">查看</button>
 </div>
   
 </template>

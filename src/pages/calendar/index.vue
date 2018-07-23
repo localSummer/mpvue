@@ -9,6 +9,8 @@
     <div v-if="showCalendar">
       <Calendar
         :value="value"
+        @prev="prev"
+        @next="next"
         clean
         range
         @select="select"
@@ -37,6 +39,18 @@
     methods: {
       setToday (val, val1, val2) {
         this.$refs.calendar.setToday()
+      },
+      prev (month) {
+        let currentMonth = new Date().getMonth() + 1
+        if (currentMonth === month) {
+          this.setToday()
+        }
+      },
+      next (month) {
+        let currentMonth = new Date().getMonth() + 1
+        if (currentMonth === month) {
+          this.setToday()
+        }
       },
       select (start, end) {
         let startDate = Object.assign([], start)

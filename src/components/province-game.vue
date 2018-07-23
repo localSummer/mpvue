@@ -55,6 +55,7 @@ export default {
         id: this.select.value,
         name: this.select.name
       })
+      wx.navigateBack()
     }
   },
   onUnload () {
