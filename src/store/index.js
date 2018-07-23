@@ -11,10 +11,9 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-  test: 0,
   selectDate: {
-    startDate: '2018-7-10',
-    endDate: '2018-7-11'
+    startDate: '2018-07-10',
+    endDate: '2018-07-11'
   }
 }
 

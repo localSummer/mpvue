@@ -11,9 +11,9 @@
             <div class="wrap-info">日期</div>
           </div>
           <div class="wrap-input">
-            <input type="text" disabled v-model="date">
+            <input type="text" disabled v-model="getSelectDate">
           </div>
-          <img class="wrap-spread" src="../../media/images/spread.png" alt="">
+          <img class="wrap-spread" @click="handleSpread(0)" src="../../media/images/spread.png" alt="">
         </div>
         <div class="wrap-item">
           <div>
@@ -23,7 +23,7 @@
           <div class="wrap-input">
             <input type="text" disabled v-model="game">
           </div>
-          <img class="wrap-spread" src="../../media/images/spread.png" alt="">
+          <img class="wrap-spread" @click="handleSpread(1)" src="../../media/images/spread.png" alt="">
         </div>
         <div class="wrap-item">
           <div>
@@ -33,7 +33,7 @@
           <div class="wrap-input">
             <input type="text" disabled v-model="group">
           </div>
-          <img class="wrap-spread" src="../../media/images/spread.png" alt="">
+          <img class="wrap-spread" @click="handleSpread(2)" src="../../media/images/spread.png" alt="">
         </div>
     </div>
     <button class="submit" @click="handleLook">查看</button>
@@ -42,17 +42,33 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
-      date: '2018-07-01 ~ 2018-07-08',
       game: '2018第三节全国食品营养与安全检测技能大赛',
       group: '北京石油化工学院'
     }
   },
+  computed: {
+    ...mapGetters([
+      'getSelectDate'
+    ])
+  },
   methods: {
     handleLook () {
       wx.navigateBack()
+    },
+    handleSpread (num) {
+      if (num === 0) {
+        wx.navigateTo({
+          url: '../calendar/main'
+        })
+      } else if (num === 1) {
+        console.log(1)
+      } else {
+        console.log(2)
+      }
     }
   }
 }

@@ -43,6 +43,18 @@
         let endDate = Object.assign([], end)
         startDate[1] += 1
         endDate[1] += 1
+        if (startDate[1] < 10) {
+          startDate[1] = '0' + startDate[1]
+        }
+        if (startDate[2] < 10) {
+          startDate[2] = '0' + startDate[2]
+        }
+        if (endDate[1] < 10) {
+          endDate[1] = '0' + endDate[1]
+        }
+        if (endDate[2] < 10) {
+          endDate[2] = '0' + endDate[2]
+        }
         this.startDate = startDate.join('-')
         this.endDate = endDate.join('-')
       },
