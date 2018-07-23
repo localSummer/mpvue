@@ -2,7 +2,7 @@
   <div class="game">
     <div class="search">
       <input type="text" v-model="search" placeholder="请输入关键字">
-      <img src="../../media/images/search.png" alt="">
+      <div class="search-img"></div>
     </div>
     <div class="tabs">
       <div :class="{active: activeTab === 0}" @click="handleActiveTab(0)">国赛</div>
@@ -73,13 +73,15 @@ export default {
       font-weight: bold;
       color: #666;
     }
-    img {
+    .search-img {
       display: inline-block;
       width: 16px;
       height: 16px;
       position: absolute;
       top: 7px;
       right: 12px;
+      background-image: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cdefs%3E%3Cstyle/%3E%3C/defs%3E%3Cpath d='M991.397 907.301l-305.51-305.508c42.707-60.227 67.893-131.405 67.893-209.148-3.286-101.837-38.327-186.153-106.216-252.95C580.766 71.802 496.449 36.762 394.612 33.477 292.775 36.762 208.46 71.802 140.568 139.693 73.77 206.49 38.73 290.806 36.54 392.643c3.285 101.835 38.325 186.153 105.122 254.043 66.796 66.796 151.112 101.836 252.95 104.026 77.744 0 147.827-24.09 208.052-66.796l305.51 306.607 83.222-83.222zM106.622 392.643c2.19-82.127 30.661-150.018 84.317-203.674s121.546-82.126 203.673-84.316c82.127 2.19 150.016 30.66 203.674 84.316 54.75 53.656 83.221 121.547 85.41 203.674-2.189 82.127-30.66 150.016-85.41 203.674-53.658 53.655-121.549 82.124-203.674 84.314-82.127-2.19-150.018-30.659-203.673-84.314-53.656-53.658-82.127-121.547-84.317-203.674z' fill='%23f90'/%3E%3C/svg%3E");
+      background-size: cover;
     }
   }
   .tabs {

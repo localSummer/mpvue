@@ -2,7 +2,7 @@
   <div class="date">
     <div class="form">
       <input type="text" disabled="true" v-model="startDate" placeholder="起始日期">
-      <img src="../../media/images/arrow-right.png" alt="rightArrow">
+      <div class="arrow"></div>
       <input type="text" disabled="true" v-model="endDate" placeholder="终止日期">
     </div>
     <div class="tips" v-if="startDate === '' && endDate === ''" v-text="tips"></div>
@@ -116,11 +116,15 @@
     border-radius: 40px;
     input {
       text-align: center;
+      width: 153px;
       color: #131313;
     }
-    img {
+    .arrow {
+      display: inline-block;
       width: 20px;
       height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cdefs%3E%3Cstyle/%3E%3C/defs%3E%3Cpath d='M170.667 469.333v85.334h512L448 789.333l60.587 60.587L846.507 512l-337.92-337.92L448 234.667l234.667 234.666h-512z' fill='%23666'/%3E%3C/svg%3E");
+      background-size: cover;
     }
   }
   .tips {

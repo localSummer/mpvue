@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="header">
-      <img class="person" src="../../media/images/person.png" alt="">
+      <div class="person"></div>
       <span>下午好，欢迎使用数据统计分析</span>
-      <img @click="handleForwardDate(1)" class="apps" src="../../media/images/apps.png" alt="">
+      <div @click="handleForwardDate(1)" class="apps"></div>
     </div>
     <div class="date">
       <span class="label">
@@ -11,7 +11,7 @@
         ~
         <span v-text="selectDate.endDate"></span>
       </span>
-      <img @click="handleForwardDate(0)" src="../../media/images/down.png" alt="">
+      <div class="down" @click="handleForwardDate(0)"></div>
     </div>
     <div class="last">
       <div class="date-last">
@@ -120,59 +120,65 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80rpx;
-    border-bottom: 2rpx solid #ccc;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
     position: relative;
     .person {
-      width: 60rpx;
-      height: 60rpx;
+      width: 30px;
+      height: 30px;
       display: inline-block;
-      margin-right: 8rpx;
+      margin-right: 4px;
+      background-image: url("data:image/svg+xml, %3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cdefs%3E%3Cstyle/%3E%3C/defs%3E%3Cpath d='M512 598.016q107.99 0 224.981 47.019t116.992 123.008v86.016H169.984v-86.016q0-75.99 116.992-123.008t224.981-47.019zM512 512q-70.016 0-120.021-50.005t-50.006-120.022 50.006-121.002T512 169.984t120.021 50.987 50.006 121.002-50.006 120.022T512 512z' fill='%23f90'/%3E%3C/svg%3E"); 
+      background-size: cover;
     }
     span {
-      font-size: 32rpx;
+      font-size: 16px;
       color: #000;
       font-weight: bold;
       letter-spacing: 1px;
     }
     .apps {
       position: absolute;
-      top: 18rpx;
-      right: 16rpx;
-      width: 48rpx;
-      height: 48rpx;
+      top: 9px;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cdefs%3E%3Cstyle/%3E%3C/defs%3E%3Cpath d='M682.005 853.995V681.984h172.011v172.01h-172.01zm0-256V425.984h172.011v172.01h-172.01zm-256-256V169.984h172.011v172.01h-172.01zm256-171.99h172.011v172.011h-172.01v-172.01zm-256 427.99V425.984h172.011v172.01h-172.01zm-256 0V425.984h172.011v172.01h-172.01zm0 256V681.984h172.011v172.01h-172.01zm256 0V681.984h172.011v172.01h-172.01zm-256-512V169.984h172.011v172.01h-172.01z' fill='%23666'/%3E%3C/svg%3E");
+      background-size: cover;
     }
   }
   .date {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 16rpx;
-    img {
+    margin: 8px;
+    .down {
       display: inline-block;
-      width: 32rpx;
-      height: 32rpx;
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cdefs%3E%3Cstyle/%3E%3C/defs%3E%3Cpath d='M163.446 275.692h697.108c19.692 0 33.477 25.6 17.723 43.323L537.6 736.492c-11.815 15.754-37.415 15.754-49.23 0L143.753 319.015c-13.785-17.723-1.97-43.323 19.692-43.323z' fill='%23666'/%3E%3C/svg%3E");
+      background-size: cover;
     }
     .label {
-      font-size: 30rpx;
-      margin-right: 60rpx;
+      font-size: 15px;
+      margin-right: 30px;
       color: #000;
     }
   }
   .last {
-    border-bottom: 2rpx dashed #ccc;
-    padding-bottom: 16rpx;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 8px;
   }
   .date-last {
-    width: 600rpx;
+    width: 300px;
     margin: 0 auto;
     span {
       box-sizing: border-box;
       display: inline-block;
       text-align: center;
-      width: 150rpx;
-      border-right: 4rpx solid #085294;
-      font-size: 30rpx;
+      width: 75px;
+      border-right: 2px solid #085294;
+      font-size: 15px;
       color: #ff9901;
     }
     span:last-child {
