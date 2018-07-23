@@ -127,7 +127,7 @@ export const dataSummary = function (plantCap) {
     },
     grid: {
       show: false,
-      top: 40,
+      top: 25,
       left: 10,
       right: 10,
       bottom: 10

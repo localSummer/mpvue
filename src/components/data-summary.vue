@@ -65,7 +65,7 @@
 <style scope lang="less">
 .summary {
   width: 100%;
-  height: 245px;
+  height: 235px;
   margin: 0 auto;
   padding-bottom: 5px;
   border-bottom: 1px dashed #ccc;
