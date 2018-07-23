@@ -7,7 +7,7 @@
     </div>
     <div class="date">
       <span>2017-07 ~ 2018-07</span>
-      <img src="../../media/images/down.png" alt="">
+      <img @click="handleForwardDate" src="../../media/images/down.png" alt="">
     </div>
     <div class="last">
       <div class="date-last">
@@ -29,6 +29,12 @@
       </div>
       <div v-if="activeTab === 2">
         <train-score></train-score>
+      </div>
+      <div v-if="activeTab === 3">
+        <number-ranking></number-ranking>
+      </div>
+      <div v-if="activeTab === 4">
+        <time-ranking></time-ranking>
       </div>
     </div>
     
@@ -58,6 +64,8 @@ import dataSummary from '@/components/data-summary'
 import frequencyTrend from '@/components/frequency-trend'
 import timeAnalysis from '@/components/time-analysis'
 import trainScore from '@/components/train-score'
+import numberRanking from '@/components/number-ranking'
+import timeRanking from '@/components/time-ranking'
 
 export default {
   data () {
@@ -71,7 +79,9 @@ export default {
     dataSummary,
     frequencyTrend,
     timeAnalysis,
-    trainScore
+    trainScore,
+    numberRanking,
+    timeRanking
   },
   methods: {
     handleActive (num) {
@@ -79,6 +89,11 @@ export default {
     },
     handleTabActive (num) {
       this.activeTab = num
+    },
+    handleForwardDate () {
+      wx.navigateTo({
+        url: '../calendar/main'
+      })
     }
   }
 }
