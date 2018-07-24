@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <div class="person"></div>
-      <span>下午好，欢迎使用数据统计分析</span>
+      <span><span v-text="getWelcomeTime"></span>，欢迎使用数据统计分析</span>
       <div @click="handleForwardDate(1)" class="apps"></div>
     </div>
     <div class="date">
@@ -71,6 +71,7 @@ import timeAnalysis from '@/components/time-analysis'
 import trainScore from '@/components/train-score'
 import numberRanking from '@/components/number-ranking'
 import timeRanking from '@/components/time-ranking'
+import { getWelcomeTime } from '@/utils/index'
 
 export default {
   data () {
@@ -83,7 +84,8 @@ export default {
   computed: {
     ...mapState([
       'selectDate'
-    ])
+    ]),
+    getWelcomeTime
   },
   components: {
     dataSummary,
@@ -110,6 +112,16 @@ export default {
           url: '../search/main'
         })
       }
+    }
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '欢迎使用数据统计分析',
+      path: '/pages/index/main'
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <div class="person"></div>
-      <span>下午好，欢迎使用数据统计分析</span>
+      <span><span v-text="getWelcomeTime"></span>，欢迎使用数据统计分析</span>
     </div>
     <div class="wrap">
         <div class="wrap-item">
@@ -43,6 +43,7 @@
 
 <script>
 import {mapGetters, mapState} from 'vuex'
+import {getWelcomeTime} from '@/utils/index'
 export default {
   data () {
     return {
@@ -56,7 +57,8 @@ export default {
     ...mapState([
       'selectGame',
       'selectUser'
-    ])
+    ]),
+    getWelcomeTime
   },
   methods: {
     handleLook () {

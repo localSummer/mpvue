@@ -18,6 +18,27 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
+export function getWelcomeTime () {
+  let hours = new Date().getHours()
+  if (hours < 6) {
+    return '凌晨好'
+  } else if (hours < 9) {
+    return '早上好'
+  } else if (hours < 12) {
+    return '上午好'
+  } else if (hours < 14) {
+    return '中午好'
+  } else if (hours < 17) {
+    return '下午好'
+  } else if (hours < 19) {
+    return '傍晚好'
+  } else if (hours < 22) {
+    return '晚上好'
+  } else {
+    return '深夜好'
+  }
+}
+
 export default {
   formatNumber,
   formatTime
