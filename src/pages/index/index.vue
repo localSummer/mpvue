@@ -87,6 +87,14 @@ export default {
     ]),
     getWelcomeTime
   },
+  watch: {
+    selectDate: {
+      handler (newVal, oldVal) {
+        console.log(newVal, oldVal)
+      },
+      deep: true
+    }
+  },
   components: {
     dataSummary,
     frequencyTrend,
@@ -113,6 +121,9 @@ export default {
         })
       }
     }
+  },
+  mounted () {
+    console.log('mounted')
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
